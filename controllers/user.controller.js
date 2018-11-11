@@ -77,7 +77,7 @@ exports.user_details = (req, res) => {
 };
 
 /** Update Action */
-exports.user_update = async (req, res) => {
+exports.user_update = (req, res) => {
   // Check if the suppied email is actually an email
   if (typeof req.body.email !== 'undefined' && !validator.isEmail(req.body.email)) {
     return res.status(422).json({
