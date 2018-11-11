@@ -7,9 +7,9 @@ exports.test = (req, res) => {
 };
 
 /** Create Action */
-exports.user_create = (req, res) => {
+exports.user_create = async (req, res) => {
   // Check if the suppied email is actually an email
-  if (!validator.isEmail(req.body.email)) {
+  if (typeof req.body.email !== 'undefined' && !validator.isEmail(req.body.email)) {
     return res.status(422).json({
       status: 0,
       error: 'Please provide a valid email address',
@@ -17,7 +17,8 @@ exports.user_create = (req, res) => {
   }
 
   // Check if given or family name is empty
-  if (validator.isEmpty(req.body.givenName) || validator.isEmpty(req.body.familyName)) {
+  if ((req.body.givenName && validator.isEmpty(req.body.givenName))
+      || (req.body.familyName && validator.isEmpty(req.body.familyName))) {
     return res.status(422).json({
       status: 0,
       error: 'Please check givenName and familyName is not empty',
@@ -29,6 +30,14 @@ exports.user_create = (req, res) => {
     givenName: req.body.givenName,
     familyName: req.body.familyName,
   });
+
+  const existingUser = await User.findOne({ email: req.body.email }).exec();
+  if (existingUser) {
+    return res.status(409).json({
+      status: 0,
+      error: `The specified email ${req.body.email} address already exists`,
+    });
+  }
 
   // Save the user into mongo once it's all validated
   user.save((err) => {
@@ -68,7 +77,7 @@ exports.user_details = (req, res) => {
 };
 
 /** Update Action */
-exports.user_update = (req, res) => {
+exports.user_update = async (req, res) => {
   // Check if the suppied email is actually an email
   if (typeof req.body.email !== 'undefined' && !validator.isEmail(req.body.email)) {
     return res.status(422).json({
