@@ -16,7 +16,7 @@ These are the following routes you can PUT, DELETE, GET and POST to.
 
 | Route | Method | Parameters | Description |
 | ------ | ------ | ------ | ------ |
-| /create | POST | `email`: Email address of user<br>`givenName`: Users given name <br>familyName`: Users family name | Creates a user based on provided information<br>returns users id upon creation |
+| /create | POST | `email`: Email address of user<br>`givenName`: Users given name <br>`familyName`: Users family name | Creates a user based on provided information<br>returns users id upon creation |
 | /:id | GET | User ID | Get user details by id |
 | /:id/update | PUT | User ID and fields you wish to update (see /create) | Update set details about user by id |
 | /:id/delete | DELETE | User ID | Delete user by id |
