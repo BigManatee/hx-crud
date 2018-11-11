@@ -31,7 +31,7 @@ exports.user_create = (req, res) => {
   });
 
   // Save the user into mongo once it's all validated
-  user.save((err, user) => {
+  user.save((err) => {
     if (err) {
       return res.status(422).json({
         status: 0,
@@ -47,6 +47,8 @@ exports.user_create = (req, res) => {
       },
     });
   });
+
+  return undefined;
 };
 
 /** Read by ID Action */
@@ -97,6 +99,8 @@ exports.user_update = (req, res) => {
       message: 'Update Successful',
     });
   });
+
+  return undefined;
 };
 
 /** Delete Action */
@@ -121,4 +125,6 @@ exports.user_delete = (req, res) => {
       message: 'Deleted successfully',
     });
   });
+
+  return undefined;
 };
