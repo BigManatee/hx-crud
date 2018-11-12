@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 
 // Simple version, without validation or sanitation
 exports.test = (req, res) => {
-  res.send('Greetings from the Test controller!');
+  res.status(200).send('Hello, world');
 };
 
 /** Create Action */
@@ -66,7 +66,7 @@ exports.user_details = (req, res) => {
     if (err) {
       return res.status(422).json({
         status: 0,
-        error: err.message || 'An error occurred while retrieving user',
+        error: `No user with id of ${req.params.id}`,
       });
     }
     return res.status(200).json({

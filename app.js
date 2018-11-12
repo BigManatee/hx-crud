@@ -27,3 +27,5 @@ mongoose.connect(mongoDB, {
 app.listen(1337, () => {
   console.log('Server is up and running on port numner 1337');
 });
+
+module.exports = app;
