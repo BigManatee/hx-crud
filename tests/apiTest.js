@@ -74,3 +74,28 @@ describe('POST /user/create', () => {
       });
   });
 });
+
+
+/**
+ * Testing PUT user update endpoint
+ */
+describe('PUT /user/:id/update', () => {
+  const data = {
+    email: 'gumgum@natm.com',
+    givenName: 'Tyler',
+    familyName: 'Clean',
+  };
+
+  it('respond with 200 and success updated', (done) => {
+    request(app)
+      .post('/user/5be9d9dbe6fbea42330b53cc/update')
+      .send(data)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
