@@ -118,4 +118,4 @@ Here you can see the samples from the api endpoints.
 ```
 ---
 ### Tests
-Use `npm test` to run the tests what are located in `tests/testApi.js`
+Use `npm test` to run the tests, what are located in `tests/testApi.js`
