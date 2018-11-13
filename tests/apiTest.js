@@ -2,14 +2,14 @@ const request = require('supertest');
 const app = require('../app');
 
 /**
- * Get the test route
+ * Get all users endpoint
  */
-describe('GET /user/test', () => {
-  it('respond with 200 status and message (200 status)', (done) => {
+describe('GET /user/all', () => {
+  it('respond with 200 status and list of users', (done) => {
     request(app)
-      .get('/user/test')
+      .get('/user/all')
+      .expect('Content-Type', /json/)
       .expect(200)
-      .expect('Hello, world')
       .end((err) => {
         if (err) return done(err);
         done();
@@ -83,16 +83,16 @@ describe('PUT /user/:id/update', () => {
   const data = {
     email: 'gumgum@natm.com',
     givenName: 'Tyler',
-    familyName: 'Clean',
+    familyName: `Clean ${Math.floor(Math.random() * 20)}`,
   };
 
   it('respond with 200 and success updated', (done) => {
     request(app)
-      .post('/user/5be9d9dbe6fbea42330b53cc/update')
+      .put('/user/5be9d9dbe6fbea42330b53cc/update')
       .send(data)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(201)
+      .expect(200)
       .end((err) => {
         if (err) return done(err);
         done();

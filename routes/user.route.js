@@ -3,8 +3,8 @@ const userController = require('../controllers/user.controller');
 
 const router = express.Router();
 
-/** Test Route */
-router.get('/test', userController.test);
+/** All users Route */
+router.get('/all', userController.all_users);
 
 /** POST Create Route */
 router.post('/create', userController.user_create);

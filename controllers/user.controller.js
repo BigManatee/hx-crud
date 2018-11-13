@@ -1,9 +1,22 @@
 const validator = require('validator');
 const User = require('../models/user.model');
 
-// Simple version, without validation or sanitation
-exports.test = (req, res) => {
-  res.status(200).send('Hello, world');
+/** List all users */
+exports.all_users = (req, res) => {
+  User.find((err, users) => {
+    if (err) {
+      return res.status(422).json({
+        status: 0,
+        error: err.message || 'An error occurred while retrieving usera',
+      });
+    }
+
+    return res.status(200).json({
+      status: 1,
+      message: 'Retrieved successfully',
+      users,
+    });
+  });
 };
 
 /** Create Action */
