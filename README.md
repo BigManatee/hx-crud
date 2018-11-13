@@ -5,8 +5,10 @@
   - `cd` into `hx-crud`
   - Run `npm install` to install the dependencies
   - Install MongoDB and make sure it's running
+  - Create a database called simplecrudapi
   - run `node app.js` to start the program
   - If everything is successful the app will be running on port `1337`
+  - Use Postman or something similar to start making your requests
 
 --
 
