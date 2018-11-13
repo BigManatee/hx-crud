@@ -12,11 +12,15 @@ You should now be able to use Postman to make requests to the API.
 
 
 ### The Routes
-These are the following routes you can PUT, DELETE, GET and POST to.
+These are the following routes you can PUT, DELETE, GET and POST to via Postman or another service.
 
 | Route | Method | Parameters | Description |
 | ------ | ------ | ------ | ------ |
-| /create | POST | `email`: Email address of user<br>`givenName`: Users given name <br>`familyName`: Users family name | Creates a user based on provided information<br>returns users id upon creation |
-| /:id | GET | User ID | Get user details by id |
-| /:id/update | PUT | User ID and fields you wish to update (see /create) | Update set details about user by id |
-| /:id/delete | DELETE | User ID | Delete user by id |
+| /user/all | GET | none | Returns a list of all users in the database |
+| /user/create | POST | `email`: Email address of user<br>`givenName`: Users given name <br>`familyName`: Users family name | Creates a user based on provided information<br>returns users id upon creation |
+| /user/:id | GET | User ID | Get user details by id |
+| /user/:id/update | PUT | User ID and fields you wish to update (see /create) | Update set details about user by id |
+| /user/:id/delete | DELETE | User ID | Delete user by id |
+
+### Tests
+Use `npm test` to run the tests what are located in `tests/testApi.js`
