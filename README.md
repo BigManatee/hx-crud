@@ -1,4 +1,4 @@
-# Holiday Extras CRUD Demo
+# CRUD Demo
 
 ### Downloading & Installing
   - Download or clone this repository
